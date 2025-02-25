@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>icon/arc_2.png</file>
+        <file>icon/ellipse.svg</file>
+        <file>icon/line.svg</file>
+        <file>icon/login-icon.svg</file>
+        <file>icon/logout-icon.svg</file>
+        <file>icon/point.svg</file>
+        <file>icon/polygon.svg</file>
+        <file>icon/polyline.svg</file>
+        <file>icon/rectangle.svg</file>
+        <file>icon/rounded-rectangle.svg</file>
+        <file>icon/text.png</file>
+        <file>icon/text.svg</file>
+        <file>icon/image.svg</file>
+        <file>icon/user.svg</file>
+        <file>icon2/black.svg</file>
+        <file>icon2/blue.svg</file>
+        <file>icon2/boardFrame.png</file>
+        <file>icon2/colour.png</file>
+        <file>icon2/dark-blue.svg</file>
+        <file>icon2/green.svg</file>
+        <file>icon2/red.svg</file>
+        <file>icon2/draw.svg</file>
+        <file>icon2/close.svg</file>
+        <file>icon2/logo_icon.svg</file>
+    </qresource>
+</RCC>
