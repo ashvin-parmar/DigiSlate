@@ -24,5 +24,21 @@
         <file>icon2/draw.svg</file>
         <file>icon2/close.svg</file>
         <file>icon2/logo_icon.svg</file>
+        <file>icon2/circle.svg</file>
+        <file>icon2/pick_tool.svg</file>
+        <file>icon2/addNewPage.svg</file>
+        <file>icon2/freeDraw.svg</file>
+        <file>icon2/boardFrame_removebg.png</file>
+        <file>icon2/drag.svg</file>
+        <file>icon2/open_file.svg</file>
+        <file>icon2/save.svg</file>
+        <file>icon2/group-items.svg</file>
+        <file>icon2/clearn.svg</file>
+        <file>icon2/group.svg</file>
+        <file>icon2/rubber.svg</file>
+        <file>icon2/page.svg</file>
+        <file>icon2/watermark.png</file>
+        <file>icon2/resize.svg</file>
+        <file>icon2/splash.png</file>
     </qresource>
 </RCC>
