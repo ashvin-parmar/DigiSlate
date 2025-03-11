@@ -3,7 +3,7 @@ int PolygonShape::count=1;
 PolygonShape::PolygonShape(QObject *parent):Drawing(parent)
 {
     this->penColor=Qt::black;
-    this->brush=QBrush(Qt::white,Qt::SolidPattern);
+    this->brush=QBrush(Qt::NoBrush);
     this->number=count++;
 }
 PolygonShape::~PolygonShape()
@@ -29,12 +29,61 @@ QString PolygonShape::toString()
 }
 void PolygonShape::select(QPainter &painter)
 {
-
+    painter.drawPoints(points);
 }
 bool PolygonShape::isPointInShapeRegion(const QPoint &point)
 {
-   Q_UNUSED(point);
-    return false;
+    return QPolygon(points).contains(point);
+}
+void PolygonShape::moveShape(const QPointF &diffPoint)
+{
+    QPoint point((int)diffPoint.x(),(int)diffPoint.y());
+    QPolygon polygon(this->points);
+    polygon.translate(point);
+    this->points=polygon.toList().toVector();
+}
+Drawing * PolygonShape::fromJson(const QJsonObject &json)
+{
+    PolygonShape *polygon=new PolygonShape();
+    QJsonValue value=json["points"];
+    if(value.isArray())
+    {
+        QJsonArray pointsArr=value.toArray();
+        for(QJsonValue value:pointsArr)
+        {
+            if(value.isArray())
+            {
+                QJsonArray pointArr=value.toArray();
+            polygon->points.append(QPoint(pointArr[0].toInt(),pointArr[1].toInt()));
+            }
+        }
+
+    }
+    polygon->penColor=QColor(json["penColor"].toString());
+    polygon->penWidth=json["penWidth"].toInt();
+    if(const QJsonValue value=json["brush"]; value.isObject())
+    {
+        QVariant variant(value.toVariant());
+        QBrush bbrush=variant.value<QBrush>();
+        polygon->brush=bbrush;
+    }
+    return polygon;
+}
+QJsonObject PolygonShape::toJson() const
+{
+    QJsonObject json;
+    QJsonArray pointsArr;
+    for(QPoint point:this->points)
+    {
+        QJsonArray pointArr({point.x(),point.y()});
+        pointsArr.append(pointArr);
+    }
+    json["points"]=pointsArr;
+    json["penColor"]=this->penColor.name();
+    json["penWidth"]=this->penWidth;
+    QVariant value=QVariant::fromValue(brush);
+    json["brush"]=value.toJsonObject();
+    return json;
 }
 QVector<QPoint> PolygonShape::getPoints() const
 {

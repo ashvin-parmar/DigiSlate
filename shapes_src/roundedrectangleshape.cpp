@@ -32,12 +32,59 @@ QString RoundedRectangleShape::toString()
 }
 void RoundedRectangleShape::select(QPainter &painter)
 {
-
+    QPen pen=painter.pen();
+    pen.setWidth(penWidth+5);
+    painter.setPen(pen);
+    QVector<QPoint> points;
+    points.append(QPoint(x+width/2,y));
+    points.append(QPoint(x+width,y+height/2));
+    points.append(QPoint(x+width/2,y+height));
+    points.append(QPoint(x,y+height/2));
 }
 bool RoundedRectangleShape::isPointInShapeRegion(const QPoint &point)
 {
    Q_UNUSED(point);
+
     return false;
+}
+void RoundedRectangleShape::moveShape(const QPointF &diffPoint)
+{
+    this->x+=diffPoint.x();
+    this->y+=diffPoint.y();
+}
+Drawing * RoundedRectangleShape::fromJson(const QJsonObject &json)
+{
+   RoundedRectangleShape *shape=new RoundedRectangleShape();
+   shape->x=json["x"].toInt();
+   shape->y=json["y"].toInt();
+   shape->width=json["width"].toInt();
+   shape->height=json["height"].toInt();
+   shape->xRadius=json["xRadius"].toInt();
+   shape->yRadius=json["yRadius"].toInt();
+   shape->penColor=QColor(json["penColor"].toString());
+   shape->penWidth=json["penWidth"].toInt();
+   if(const QJsonValue value=json["brush"]; value.isObject())
+   {
+       QVariant variant(value.toVariant());
+       QBrush bbrush=variant.value<QBrush>();
+       shape->brush=bbrush;
+   }
+   return shape;
+}
+QJsonObject RoundedRectangleShape::toJson() const
+{
+    QJsonObject json;
+    json["x"]=x;
+    json["y"]=y;
+    json["width"]=width;
+    json["height"]=height;
+    json["penColor"]=this->penColor.name();
+    json["penWidth"]=this->penWidth;
+    json["xRadius"]=this->xRadius;
+    json["yRadius"]=this->yRadius;
+    QVariant value=QVariant::fromValue(brush);
+    json["brush"]=value.toJsonObject();
+    return json;
 }
 int RoundedRectangleShape::getX() const
 {

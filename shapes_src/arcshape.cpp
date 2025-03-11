@@ -30,14 +30,60 @@ QString ArcShape::toString()
 }
 void ArcShape::select(QPainter &painter)
 {
-
+Q_UNUSED(painter);
 }
 bool ArcShape::isPointInShapeRegion(const QPoint &point)
 {
    Q_UNUSED(point);
     return false;
 }
-
+void ArcShape::moveShape(const QPointF &diffPoint)
+{
+    this->x+=diffPoint.x();
+    this->y+=diffPoint.y();
+}
+Drawing * ArcShape::fromJson(const QJsonObject &json)
+{
+    ArcShape *arcShape=new ArcShape();
+    if(const QJsonValue value=json["x"]; value.isDouble())
+    {
+        arcShape->x=value.toInt();
+    }
+    if(const QJsonValue value=json["y"]; value.isDouble())
+    {
+        arcShape->y=value.toInt();
+    }
+    if(const QJsonValue value=json["width"]; value.isDouble())
+    {
+        arcShape->width=value.toInt();
+    }
+    if(const QJsonValue value=json["height"]; value.isDouble())
+    {
+        arcShape->height=value.toInt();
+    }
+    if(const QJsonValue value=json["penWidth"]; value.isDouble())
+    {
+        arcShape->penWidth=value.toInt();
+    }
+    if(const QJsonValue value=json["penColor"]; value.isString())
+    {
+        arcShape->penColor=QColor(value.toString());
+    }
+    return arcShape;
+}
+QJsonObject ArcShape::toJson() const
+{
+    QJsonObject json;
+    json["x"]=x;
+    json["y"]=y;
+    json["width"]=width;
+    json["height"]=height;
+    json["startAngle"]=startAngle;
+    json["spanAngle"]=spanAngle;
+    json["penWidth"]=penWidth;
+    json["penColor"]=penColor.name();
+    return json;
+}
 
 int ArcShape::getX() const
 {

@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     drawing.cpp \
+    groupshape.cpp \
     model.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -34,6 +35,7 @@ SOURCES += \
 
 HEADERS += \
     drawing.h \
+    groupshape.h \
     model.h \
     mainwindow.h \
     shapes_header/arcshape.h \

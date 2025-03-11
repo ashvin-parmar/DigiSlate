@@ -18,6 +18,9 @@ public:
     QString toString() override;
     void select(QPainter &painter) override;
     bool isPointInShapeRegion(const QPoint &point) override;
+    void moveShape(const QPointF &diffPoint) override;
+    static Drawing * fromJson(const QJsonObject &json);
+    QJsonObject toJson() const override;
 
     int getX() const;
     void setX(int value);
@@ -43,9 +46,13 @@ public:
     QPixmap getPixmap() const;
     void setPixmap(const QPixmap &value);
 
+    QString getFileName() const;
+    void setFileName(const QString &value);
+
 private:
     int x,y;
     int width,height;
+    QString fileName;
     double scaleFactor;
     qreal rotationAngle;
     Qt::TransformationMode transformationMode;

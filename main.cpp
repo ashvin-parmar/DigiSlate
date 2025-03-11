@@ -7,14 +7,14 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    QApplication a(argc, argv);
-    QPixmap pixmap("splash.jpg");
-    QSplashScreen splash(pixmap);
-   // splash.setGeometry(0,0,1370,700);
+    QPixmap pixmap(":/images/icon2/splash.png");
+    QSplashScreen splash(pixmap.scaled(800,800,Qt::KeepAspectRatio));
     splash.show();
-    QTimer::singleShot(50000,&splash,&QWidget::close);
-
+    app.processEvents();
+//    int x;
+//    scanf("%d",&x);
     MainWindow w;
     w.show();
+    splash.finish(&w);
     return app.exec();
 }

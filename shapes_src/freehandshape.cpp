@@ -41,6 +41,46 @@ bool FreeHandShape::isPointInShapeRegion(const QPoint &point)
     }
     return false;
 }
+void FreeHandShape::moveShape(const QPointF &diffPoint)
+{
+    QPoint point((int)diffPoint.x(),(int)diffPoint.y());
+    this->drawPath.translate(point);
+}
+Drawing *FreeHandShape::fromJson(const QJsonObject &json)
+{
+    FreeHandShape *freeHand=new FreeHandShape();
+    QJsonValue value=json["drawPath"];
+    if(value.isArray())
+    {
+        QJsonArray pointsArr=value.toArray();
+        for(QJsonValue value:pointsArr)
+        {
+            if(value.isArray())
+            {
+                QJsonArray pointArr=value.toArray();
+            freeHand->drawPath.append(QPoint(pointArr[0].toInt(),pointArr[1].toInt()));
+            }
+        }
+
+    }
+    freeHand->color=QColor(json["penColor"].toString());
+    freeHand->penWidth=json["penWidth"].toInt();
+    return freeHand;
+}
+QJsonObject FreeHandShape::toJson() const
+{
+    QJsonObject json;
+    QJsonArray pointsArr;
+    for(QPoint point:this->drawPath)
+    {
+        QJsonArray pointArr({point.x(),point.y()});
+        pointsArr.append(pointArr);
+    }
+    json["drawPath"]=pointsArr;
+    json["penColor"]=this->color.name();
+    json["penWidth"]=this->penWidth;
+    return json;
+}
 void FreeHandShape::addPoint(const QPoint &point)
 {
     this->drawPath.append(point);

@@ -18,11 +18,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-private:
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
     void mouseMoveEvent(QMouseEvent *) override;
     void mousePressEvent(QMouseEvent *event) override;
-    void PhaseIII();
+    void PhaseIII(); 
 
+private:
+    void createLook();
 private slots:
     void on_freeHandDraw_clicked();
 
@@ -47,8 +51,35 @@ private slots:
 
     void on_ellipseDraw_clicked();
 
+    void on_circleDraw_clicked();
+
+    void on_imageDraw_clicked();
+
+    void on_addNewPage_clicked();
+
+    void on_saveFile_clicked();
+
+    void on_openFile_clicked();
+
+    void on_drag_clicked();
+
+    void on_group_shape_clicked();
+
+    void on_rubber_clicked();
+
+    void on_clearScreen_clicked();
+
+    void on_penWidthSpinBox_valueChanged(int arg1);
+
+    void on_pageScreen_clicked();
+
+    void on_resizeShape_clicked();
+
 private:
     Ui::MainWindow *ui;
+    QListWidget *listWidget;
     Model *model;
+    int countPage=1;
+    QMap<int,Model *> pages;
 };
 #endif // MAINWINDOW_H
