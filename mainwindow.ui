@@ -28,10 +28,10 @@
      </rect>
     </property>
     <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+     <enum>QFrame::Shape::StyledPanel</enum>
     </property>
     <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
+     <enum>QFrame::Shadow::Raised</enum>
     </property>
     <widget class="QLabel" name="boardFrame">
      <property name="geometry">
@@ -48,10 +48,10 @@
       </font>
      </property>
      <property name="contextMenuPolicy">
-      <enum>Qt::DefaultContextMenu</enum>
+      <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
+      <enum>QFrame::Shadow::Plain</enum>
      </property>
      <property name="text">
       <string/>
@@ -70,10 +70,10 @@
       </rect>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
@@ -564,10 +564,10 @@
       </rect>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
      <widget class="QSlider" name="penWidthSlider">
       <property name="geometry">
@@ -588,7 +588,7 @@
        <number>40</number>
       </property>
       <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+       <enum>Qt::Orientation::Horizontal</enum>
       </property>
      </widget>
      <widget class="QWidget" name="layoutWidget_2">
@@ -607,7 +607,6 @@
           <font>
            <family>Times New Roman</family>
            <pointsize>14</pointsize>
-           <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
@@ -619,7 +618,7 @@
        <item>
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -806,9 +805,9 @@
      <property name="geometry">
       <rect>
        <x>60</x>
-       <y>660</y>
+       <y>680</y>
        <width>1161</width>
-       <height>121</height>
+       <height>101</height>
       </rect>
      </property>
      <property name="title">
@@ -831,7 +830,7 @@
       </size>
      </property>
      <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
+      <enum>Qt::FocusPolicy::NoFocus</enum>
      </property>
      <property name="text">
       <string/>
@@ -911,7 +910,7 @@
      <string>x: 0, y=0</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="coordinatesModel">
@@ -933,7 +932,7 @@
      <string>x: 0, y=0</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
   </widget>

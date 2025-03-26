@@ -473,19 +473,19 @@ void Model::mouseReleaseEvent(QMouseEvent *event)
 
     if(this->drag==ENABLE)
     {
-        QPointF diff=QPoint(currentPoint.x()-initialPoint.x(),currentPoint.y()-initialPoint.y());
-        if(this->flag==PICK)
-        {
-            if(drawing!=nullptr) drawing->moveShape(diff);
-            drawing=nullptr;
-        }
-        if(this->flag==GROUPPICK)
-        {
-        for(Drawing *shape:this->groupShapes->getShapes())
-        {
-            shape->moveShape(diff);
-        }
-        }
+        // QPointF diff=QPoint(currentPoint.x()-initialPoint.x(),currentPoint.y()-initialPoint.y());
+        // if(this->flag==PICK)
+        // {
+        //     if(drawing!=nullptr) drawing->moveShape(diff);
+        //     drawing=nullptr;
+        // }
+        // if(this->flag==GROUPPICK)
+        // {
+        // for(Drawing *shape:this->groupShapes->getShapes())
+        // {
+        //     shape->moveShape(diff);
+        // }
+        // }
     }
     else if(this->resize==ENABLE)
     {

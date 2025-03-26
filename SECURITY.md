@@ -18,7 +18,7 @@ If you're using an unsupported version, please **upgrade** to a supported releas
 We take security issues seriously. If you discover a vulnerability, please follow these steps:  
 
 1. **Do NOT disclose the issue publicly** until we have addressed it.  
-2. Email us at **security@xyzcompany.com** with:  
+2. Email us at **ashwinparmar8181@gmail.com** with:  
    - A detailed description of the vulnerability.  
    - Steps to reproduce the issue (if possible).  
    - Potential impact on the system.  
